@@ -13,12 +13,12 @@ export function maxInArray(arg: Array<number>){
             arg[i]= temp
         }
     }
-
     return arg[0];
-
-
 }
 
+
+
+// export function reverseArray(arg: Array)
 
 
 
