@@ -1,10 +1,73 @@
-import { toUpperCase, maxInArray, getStringInfo } from "../app/Utils"
+import { toUpperCase, maxInArray, getStringInfo, StringUtils } from "../app/Utils"
+
+
+
+
+
+
 
 
 
 
 
 describe('Utils test suite', () => {
+
+
+
+describe('StringUtils tests',(()=>{
+
+    let sut: StringUtils;
+
+beforeEach(()=>{
+    sut = new StringUtils();
+
+})
+
+
+afterEach(()=>{
+    // clearing mocks
+    console.log('hi')
+})
+
+    it('Should return correct uppercase',()=>{
+
+        const actual = sut.toUpperCase('abc');
+
+        expect(actual).toBe("ABC")
+    })
+    
+    
+    
+    it('Should return error invalid argument',()=>{
+        
+        expect(()=>{
+            sut.toUpperCase('')
+        }).toThrowError('Invalid arg!')
+    })
+    it('Should return error invalid argument',()=>{
+        try{
+            sut.toUpperCase('');
+            fail('GetStringInfo should throw error for invalid arg!')
+        }catch(err){
+            expect(err).toBeInstanceOf(Error);
+            expect(err).toHaveProperty('message','Invalid arg!');
+        }
+    })
+    
+    
+}))
+
+
+
+
+
+
+
+
+
+
+
+
 
     it.each([
         { input: 'klsakjlf', expected: "KLSAKJLF"},
@@ -16,9 +79,8 @@ describe('Utils test suite', () => {
     ])('should return uppercase of $expected', ({input, expected}) => {
 
         //arrange;
-        const sut = toUpperCase;
         // const expected = "ABC";
-
+        const sut = toUpperCase;
 
         //act:
         const actual = sut(input);
@@ -35,8 +97,7 @@ describe('Utils test suite', () => {
 
         //arrange
         const arr: Array<number> = [3, 1, -4, 0, 33]
-        const sut = maxInArray;
-
+        const sut = maxInArray
 
         //act
         const actual = sut(arr);
@@ -54,7 +115,7 @@ describe('Utils test suite', () => {
 
         //arrange
         const string = "Hello everyone";
-        const sut = getStringInfo;
+        const sut = getStringInfo
 
 
         //act
