@@ -4,29 +4,37 @@ import { toUpperCase, maxInArray, getStringInfo } from "../app/Utils"
 
 
 
-describe('Utils test suite',()=>{
+describe('Utils test suite', () => {
 
-    it('should return uppercase of a valid string',()=>{
+    it.each([
+        { input: 'klsakjlf', expected: "KLSAKJLF"},
+        { input: 'ka;lasjflkjs', expected: "KA;LASJFLKJS" },
+        { input: 'ksoofpaD', expected: "KSOOFPAD" },
+        { input: 'UPPERCAsE', expected: "UPPERCASE" },
+
+
+    ])('should return uppercase of $expected', ({input, expected}) => {
 
         //arrange;
         const sut = toUpperCase;
-        const expected = "ABC";
+        // const expected = "ABC";
+
 
         //act:
-        const actual = sut('abc');
+        const actual = sut(input);
 
 
 
         //assert:
         expect(actual).toBe(expected);
     })
-    
 
 
-    it('should return the largest number in the array(33)',()=>{
+
+    it('should return the largest number in the array(33)', () => {
 
         //arrange
-        const arr:Array<number> = [3,1,-4,0,33]
+        const arr: Array<number> = [3, 1, -4, 0, 33]
         const sut = maxInArray;
 
 
@@ -42,11 +50,11 @@ describe('Utils test suite',()=>{
 
 
 
-    it('should return info for a valid string',()=>{
+    it('should return info for a valid string', () => {
 
         //arrange
         const string = "Hello everyone";
-        const sut= getStringInfo;
+        const sut = getStringInfo;
 
 
         //act
@@ -61,9 +69,9 @@ describe('Utils test suite',()=>{
         expect(actual.extraInfo).toEqual({});
         expect(actual.characters.length).toBe(14);
         expect(actual.characters).toHaveLength(14);
-        expect(actual.characters).toEqual(['H','e','l','l','o',' ','e','v','e','r','y','o','n','e' ]);
+        expect(actual.characters).toEqual(['H', 'e', 'l', 'l', 'o', ' ', 'e', 'v', 'e', 'r', 'y', 'o', 'n', 'e']);
         expect(actual.characters).toEqual(
-            expect.arrayContaining(['H','e','l','l','o',' ','e','v','e','r','y','o','n','e'])
+            expect.arrayContaining(['H', 'e', 'l', 'l', 'o', ' ', 'e', 'v', 'e', 'r', 'y', 'o', 'n', 'e'])
 
         )
         expect(actual.characters).toContain<string>('H')
