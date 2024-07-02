@@ -21,6 +21,12 @@ export class PasswordChecker{
         if(arg.length<8){
             reasons.push(PasswordErrors.SHORT)
         }
+        if(arg.toLowerCase()===arg){
+            reasons.push(PasswordErrors.NO_UPPER_CASE)
+        }
+        if(arg.toUpperCase()===arg){
+            reasons.push(PasswordErrors.NO_LOWER_CASE)
+        }
 
         return{
             valid: reasons.length > 0 ? false:true,
