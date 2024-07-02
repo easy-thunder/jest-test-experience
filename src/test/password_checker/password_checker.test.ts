@@ -28,6 +28,17 @@ describe('PasswordChecker test suite',()=>{
     })
 
 
+    it('should return false for not having a number',()=>{
+        const actual = sut.checkAdminPassword('kosdkasfpakslf')
+        expect(actual.valid).toBe(false);
+        expect(actual.reasons).toContain(PasswordErrors.NO_NUMBERS)
+    })
+    it('should return true for  having a number',()=>{
+        const actual = sut.checkAdminPassword('kosdkasfEa3kslf')
+        expect(actual.valid).toBe(true);
+    })
+
+
 
     
     
